@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="switch" type="button" value="Switch" onclick=TurnOnOff()>
+</body>
+</html>
+<script>
+    class ElectricLamp {
+        constructor(status) {
+            this.status = status;
+        }
+        turnOn = function (){
+                this.status = true;
+                console.log('Lighting')
+        }
+
+        turnOff = function (){
+                this.status = false;
+                console.log('Light off!')
+            }
+    }
+
+    class SwitchButton {
+        constructor(status) {
+            this.status= status;
+        }
+        connectLamp(lamp){
+            this.lamp=lamp;
+        }
+        switchOff(){
+            this.status= false;
+        }
+        switchOn(){
+            this.status = true;
+        }
+        getStatus(){
+            return this.status;
+        }
+    }
+    let lamp1= new ElectricLamp(true);
+    let switch1 = new SwitchButton(true);
+    switch1.connectLamp(lamp1);
+
+    function TurnOnOff(){
+        if ( switch1.getStatus()){
+            switch1.switchOff()
+            lamp1.turnOff();
+        } else {
+            switch1.switchOn()
+            lamp1.turnOn();
+        }
+    }
+
+</script>
